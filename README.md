@@ -33,7 +33,13 @@ Or install it yourself as:
 
 ## Usage
 
+To monitor a module for method visibility changes, extend it with
+VisibilityMonitor, then the visibility_set class method will be
+called after a method's visibilty is set. For example
+
 ```ruby
+require 'visibility_monitor'
+
 class Example
   extend VisibilityMonitor
 
@@ -45,6 +51,13 @@ class Example
   end
 end
 ```
+
+would output
+
+```
+method :example has been marked :private
+```
+
 
 ## Development
 
