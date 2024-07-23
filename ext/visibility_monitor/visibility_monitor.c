@@ -36,7 +36,7 @@ static VALUE monitor_set_visibility_placeholder(VALUE mod, VALUE method_name, VA
     return Qnil;
 }
 
-void Init_visibility_monitor_c() {
+void Init_visibility_monitor(void) {
     VALUE mVisibilityMonitor = rb_define_module("VisibilityMonitor");
 
     rb_define_method(mVisibilityMonitor, "public", monitor_public, -1);

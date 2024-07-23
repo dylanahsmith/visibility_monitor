@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require 'rake/extensiontask'
 
-Rake::ExtensionTask.new("visibility_monitor_c")
+Rake::ExtensionTask.new("visibility_monitor")
 
 Rake::TestTask.new(test: :compile) do |t|
   t.libs << "test"

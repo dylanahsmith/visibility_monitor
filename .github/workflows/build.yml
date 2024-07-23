@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    name: Ruby ${{ matrix.ruby }}/${{ matrix.runner }}
+    strategy:
+      matrix:
+        ruby:  ['2.7', '3.0', '3.1', '3.2', '3.3']
+        runner: [ubuntu-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+
+    - name: Compile extension
+      run: |
+        bundle exec rake compile
+
+    - name: Run tests
+      run: |
+        bundle exec rake test
